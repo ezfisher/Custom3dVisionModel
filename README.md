@@ -1,13 +1,12 @@
 # Custom3dVisionModel
-Custom 3D Computer Vision Model
+Custom pytorch implementation of the 3D convolution layer for computer vision models.
 
-Addresses the difficulty of running 3d convolutional neural networks on mac M* (M1, M2, etc) gpu architecture.
+Done by splitting up tensor of size (batch size, channels, depth, height, width) into 3 tensors of size (batch size, channels, depth, height), (batch size, channels, depth, width), and (batch size, channels, height, width) and performing independent 2d conv layers on each slice. The three different outputs are unsqueezed to make the right shape and added back together. The output size and number of parameters for the custom layer are the same as those for the traditional implementation
 
-Done:
-3d padding
+Time comparison:
+Tested on CPU
+Each layer tested on the same random input of size (4, 3, 224, 224, 224) for 100 trials.
 
-Todo:
-3d Unfolding for more efficient convolutions
-Convolutions
-Build network
-train, test network
+Time to run mean +/- std:
+custom: 0.66 +/- 0.05 sec
+pytorch: 1.42 +/- 0.08 sec
