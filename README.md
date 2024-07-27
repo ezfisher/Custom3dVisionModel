@@ -7,7 +7,7 @@ Time comparison:
 Tested on CPU
 Each layer tested on the same random input of size (4, 3, 224, 224, 224) for 100 trials.
 
-Time to run mean +/- std:
+Time to run (mean +/- std):
 
 custom: 0.66 +/- 0.05 sec
 
